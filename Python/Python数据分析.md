@@ -161,7 +161,7 @@
 > print('b4=', b4)
 > ~~~
 >
-> ![1652935831589](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1652935831589.png)
+> ![](./img/1652935831589.png)
 
 <hr>
 
@@ -193,7 +193,7 @@
 > print(c2)
 > ~~~~
 >
-> ![1652936711826](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1652936711826.png)
+> ![1652936711826](./img/linspace.png)
 
 ###### （3）`logspace()`函数
 
@@ -209,7 +209,7 @@
 > print(c3)
 > ~~~~
 >
-> ![1652936711826](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1652936711826.png)
+> ![1652936711826](./img/logspace.png)
 
 <hr>
 
@@ -241,7 +241,7 @@
 > print(a)
 > ~~~
 >
-> ![1652938522762](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1652938522762.png)
+> ![1652938522762](./img/rand.png)
 
 ###### （2）`uniform()`函数
 
@@ -252,7 +252,7 @@
 > print(b)
 > ~~~
 >
-> ![1652938866976](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1652938866976.png)
+> ![1652938866976](./img/uniform.png)
 
 ###### （3）`randn()`函数
 
@@ -284,7 +284,7 @@
 > print(c)
 > ~~~
 >
-> ![1652939799933](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1652939799933.png)
+> ![1652939799933](./img/randint.png)
 
 <hr>
 
