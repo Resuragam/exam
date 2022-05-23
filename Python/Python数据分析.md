@@ -372,9 +372,7 @@ for item in a.flat:
 > print(a[a > 5])
 > ~~~
 >
-> 
->
-> ![1653230299118](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653230299118.png)
+> ![1653230299118](./img/1653230299118.png)
 
 <hr>
 
@@ -401,7 +399,7 @@ for item in a.flat:
 > 
 > ~~~
 >
-> ![1653232179936](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653232179936.png)
+> ![1653232179936](./img/1653232179936.png)
 
 <hr>
 
@@ -492,7 +490,7 @@ for item in a.flat:
 > plt.show()
 > ~~~
 >
-> ![1653283604878](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653283604878.png)
+> ![1653283604878](./img/1653283604878.png)
 
 <Hr>
 
@@ -511,7 +509,7 @@ for item in a.flat:
 > plt.plot(x, y, color='red', linestyle='-.', linewidth=2, marker='*')
 > ~~~
 >
-> ![1653284121900](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653284121900.png)
+> ![1653284121900](./img/1653284121900.png)
 
 <hr>
 
@@ -530,7 +528,7 @@ for item in a.flat:
 > plt.show()
 > ~~~
 >
-> ![1653284826311](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653284826311.png)
+> ![1653284826311](./img/1653284826311.png)
 
 <Hr>
 
@@ -549,7 +547,7 @@ for item in a.flat:
 > plt.show()
 > ~~~
 >
-> ![1653285111167](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653285111167.png)
+> ![1653285111167](./img/1653285111167.png)
 
 <Hr>
 
@@ -571,7 +569,7 @@ for item in a.flat:
 > 
 > ~~~
 >
-> ![1653285633154](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653285633154.png)
+> ![1653285633154](./img/1653285633154.png)
 
 
 
