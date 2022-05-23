@@ -1,6 +1,6 @@
 # Python 数据分析
 
-## 一、Python数据分析概述
+## 一、`Python`数据分析概述
 
 ### 1. 数据分析的概念、流程以及应用
 
@@ -62,7 +62,7 @@
 
 <hr>
 
-#### ==Ⅱ -Python数据分析==
+#### ==Ⅱ -`Python`数据分析==
 
 ##### ① 优势
 
@@ -74,29 +74,29 @@
 >
 > * 不仅适用于研究和原型构建，同时也适用于构建生产系统
 >
-> * Python是一门胶水语言。Python可以通过多种方式与其他语言组织粘连，调用其他语言程序。
+> * `Python`是一门胶水语言。`Python`可以通过多种方式与其他语言组织粘连，调用其他语言程序。
 
 ##### ② ==常见的类库==
 
-> * **NumPy**
+> * **`NumPy`**
 >
-> * **Pandas**
+> * **`Pandas`**
 >
-> * **Matplotlib**
+> * **`Matplotlib`**
 >
-> * **Sklearn**
+> * **`Sklearn`**
 >
 > * 其他
 
 <hr>
 
-## 二、NumPy数值计算
+## 二、`NumPy`数值计算
 
-### 1. NumPy 多维数组
+### 1. `NumPy` 多维数组
 
 #### ==Ⅰ-数组创建==
 
-##### ① array()函数创建
+##### ① `array()`函数创建
 
 >* 一维列表
 >
@@ -287,6 +287,316 @@
 > ![1652939799933](./img/randint.png)
 
 <hr>
+#### Ⅱ -数组对象属性
+
+| 属性     | 描述                             |
+| -------- | -------------------------------- |
+| ndim     | 秩                               |
+| shape    | 数组的维度                       |
+| size     | 元素总个数                       |
+| dtype    | 数据类型                         |
+| itemsize | 元素的字节大小                   |
+| nbytes   | 数组的存储大小 = size * itemsize |
+| T        | 数组的转置                       |
+| flat     | 迭代器                           |
+
+~~~ python
+a = np.array([np.arange(3), np.linspace(3, 5, 3)])
+print(a)
+print(a.T)
+print(a.ndim)
+print(a.shape)
+for item in a.flat:
+    print(item)
+~~~
+
+<hr>
+
+#### Ⅲ -数组数据类型
+
+##### ① `dtepy`指定数据类型
+
+> `NumPy`数组创建时，可以通过`dtype`参数指定数据类型
+
+##### ② `astype()`转换数据类型
+
+> `astype()`函数转换数据类型
+>
+> * `astype()`函数会创建一个新的数组，不会改变原数组的数据类型
+> * 浮点数小数部分直接舍去，不会进行四舍五入
+>
+> ~~~python
+> b = np.array([1.1, 2.2, 3.3, 4, 5])
+> c = b.astype(int)
+> print(b)
+> print(c)
+> 
+> # [1.1 2.2 3.3 4.  5. ]
+> # [1 2 3 4 5]
+> ~~~
+
+<hr>
+
+### 3. 数组索引与切片
+
+#### Ⅰ-数组索引
+
+> ~~~python
+> # a[i][j] = a[i, j]
+> import numpy as np
+> a = np.arange(12).reshape(3, 4)
+> print(a[0][1])
+> print(a[0, 1])
+> # 1
+> ~~~
+
+#### Ⅱ -数组切片
+
+> 一维数组切片：`[starting_index,ending_index,step]`
+>
+> 二维数组切片：` X[s0:e0,s1:e1]`
+>
+>  这是最通用的切片操作，表示取 第0维 的第 s0 到 e0 个元素，继续取 第1维 的第 s1 到 e1 个元素（左闭右开）
+>
+> ~~~python
+> a = np.arange(12).reshape(3, 4)
+> print(a)
+> print(a[0:2][1:3])
+> ~~~
+
+#### Ⅲ -布尔型索引
+
+> ~~~python
+> print('布尔索引')
+> print(a > 5)
+> print(a[a > 5])
+> ~~~
+>
+> 
+>
+> ![1653230299118](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653230299118.png)
+
+<hr>
+
+### 5.线性代数
+
+#### Ⅰ -数组相乘
+
+##### ① `dot()`函数
+
+> `dot()`函数计算两个数组的**矩阵乘积**
+>
+> ~~~python
+> import numpy as np
+> 
+> a = np.arange(3)
+> b = np.arange(3)
+> c = np.dot(a, b)
+> print('c=', c)
+> 
+> a2 = np.arange(1, 5).reshape(2, 2)
+> b2 = np.arange(5, 9).reshape(2, 2)
+> c2 = np.dot(a2, b2)
+> print('c2=', c2)
+> 
+> ~~~
+>
+> ![1653232179936](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653232179936.png)
+
+<hr>
+
+##### ② `vdot()`函数
+
+>  `vdot()`函数计算两个数组的**矩阵点积**
+>
+> ~~~python
+> print('np.vdot(a,b)=', np.vdot(a, b)) # 5
+> print('np.vdot(a2,b2)=', np.vdot(a2, b2)) #70
+> ~~~
+
+<hr>
+
+#### Ⅱ -矩阵行列式
+
+> `numpy.linalg.det()`函数计算矩阵的行列式
+>
+> ~~~python
+> a3 = np.arange(1, 5).reshape(2, 2)
+> print(np.linalg.det(a3)) #-2.0000000000000004
+> ~~~
+
+<hr>
+
+#### Ⅲ -逆矩阵
+
+> `numpy.linalg.inv()`函数计算矩阵的逆矩阵
+>
+> ~~~python
+> a = np.array([[1, 2], [3, 4]])
+> print(np.linalg.inv(a))
+> #[[-2.   1. ]
+>  #[ 1.5 -0.5]]
+> ~~~
+
+<hr>
+
+#### Ⅳ -线性方程组
+
+> `numpy.linalg.solve()`函数求解线性方程组
+>
+> ~~~python
+> a = np.mat("1 1 1;0 2 5;2 5 -1")
+> b = np.array([6, -4, 27])
+> x = np.linalg.solve(a,b)
+> print('x=',x) # x= [ 5.  3. -2.]
+> ~~~
+
+<Hr>
+
+#### Ⅴ -特征值和特征向量
+
+> `numpy.linalg.eigvals()`函数求解矩阵的特征向量
+>
+> `numpy.linalg.eig()`函数求解矩阵的特征向量与特征值
+>
+> ~~~python
+> a = np.array([[1, -1], [2, 4]])
+> e = np.linalg.eigvals(a)
+> print('e=',e)
+> e,v = np.linalg.eig(a)
+> print('v=',v)
+> # e = [2. 3.]
+> # v = [[-0.70710678  0.4472136 ]
+> # [ 0.70710678 -0.89442719]]
+> ~~~
+
+<Hr>
+
+##  三、`Matplotlib`数值计算
+
+
+### 1. 线形图
+
+#### Ⅰ -绘制线形图
+
+> `matplotlib.pyplot.plot()`
+>
+> ~~~python
+> import numpy as np
+> import matplotlib.pyplot as plt
+> 
+> x = np.linspace(-np.pi, np.pi, 250)
+> y = np.sin(x)
+> plt.plot(x, y)
+> plt.plot([0.5, 1, 1.5, 2])
+> plt.show()
+> ~~~
+>
+> ![1653283604878](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653283604878.png)
+
+<Hr>
+
+#### Ⅱ -参数设置
+
+> | 属性      | 意义       |
+> | --------- | ---------- |
+> | color     | 颜色       |
+> | linestyle | 线形设置   |
+> | marker    | 坐标点设置 |
+> | linewidth | 线宽设置   |
+>
+> ~~~python
+> x = np.linspace(-np.pi, np.pi, 250)
+> y = np.sin(x)
+> plt.plot(x, y, color='red', linestyle='-.', linewidth=2, marker='*')
+> ~~~
+>
+> ![1653284121900](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653284121900.png)
+
+<hr>
+
+### 5. 绘制三维图形
+
+#### Ⅰ -三维曲线图
+
+> ~~~python
+> import numpy as np
+> import matplotlib.pyplot as plt
+> ax = plt.axes(projection='3d')
+> x = np.linspace(-np.pi, np.pi, 250)
+> y = np.sin(x)
+> z = np.cos(x)
+> ax.plot3D(x, y, z)
+> plt.show()
+> ~~~
+>
+> ![1653284826311](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653284826311.png)
+
+<Hr>
+
+#### Ⅱ -三维散点图
+
+> `ax.scatter(x,y,z,c='blue')`函数绘制
+>
+> ~~~python
+> import numpy as np
+> import matplotlib.pyplot as plt
+> 
+> # fig = plt.figure()
+> ax = plt.axes(projection='3d')
+> x, y, z = np.random.random(500), np.random.random(500), np.random.random(500)
+> ax.scatter(x, y, z)
+> plt.show()
+> ~~~
+>
+> ![1653285111167](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653285111167.png)
+
+<Hr>
+
+#### Ⅲ -曲面图
+
+> `ax.plot_surface(x,y,z)`函数绘制
+>
+> ~~~python
+> import numpy as np
+> import matplotlib.pyplot as plt
+> 
+> # fig = plt.figure()
+> ax = plt.axes(projection='3d')
+> x = y = np.linspace(-2.048, 2.048, 100)
+> x, y = np.meshgrid(x, y)
+> z = 100 * (y - x ** 2) ** 2 + (1 - x) ** 2
+> ax.plot_surface(x, y, z)
+> plt.show()
+> 
+> ~~~
+>
+> ![1653285633154](C:\Users\HHY\AppData\Roaming\Typora\typora-user-images\1653285633154.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
