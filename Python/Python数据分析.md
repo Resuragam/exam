@@ -571,30 +571,201 @@ for item in a.flat:
 >
 > ![1653285633154](./img/1653285633154.png)
 
+<Hr>
 
+#### Ⅳ -等高线
 
+> `ax.contour(x,y,z)`函数绘制等高线
 
+<hr>
 
+## 四、`Pandas`数据分析
 
+### 1. `Pandas`数据结构
 
+> `Pandas`有三种数据结构：**系列**、**数据帧**和**面板**，这些数据结构都建立在`NumPy`数组基础上
 
+#### Ⅰ -`Series`（系列）
 
+> 构造函数：`Pandas.series(data, index, dtype, copy)`
+>
+> | 参数  | 描述     |
+> | ----- | -------- |
+> | data  | 数据     |
+> | index | 索引     |
+> | dtype | 数据类型 |
+> | copy  | 复制数据 |
+>
+> ~~~python
+> import numpy as np
+> import pandas as pd
+> 
+> data = np.array(['a', 'b', 'c', 'd', 'e'])
+> s1 = pd.Series(data)
+> print('默认索引：')
+> print(s1)
+> ~~~
+>
+> ![1653290829831](./img/1653290829831.png)
+>
+> ~~~python
+> s2 = pd.Series(data, index=[100, 101, 102, 103, 104])
+> print('设置索引s2')
+> print(s2)
+> print(s2.index)
+> # Int64Index([100, 101, 102, 103, 104], dtype='int64')
+> ~~~
+>
+> ![1653291072423](./img/1653291072423.png)
 
+<hr>
 
+#### Ⅱ -数据帧
 
+> 数据帧`(DataFrame)`是一个具有异构数据的二维数组，其特点是**异构数据**、**大小可变**、**数据可变**
 
+##### ① 创建空数据帧
 
+> ~~~python
+> df = pd.DataFrame()
+> print('创建空的数据帧：')
+> print(df)
+> ~~~
+>
+> ![1653291559243](./img/1653291559243.png)
 
+##### ② 数据帧
 
+> ~~~python
+> data = np.arange(11, 15)
+> df1 = pd.DataFrame(data)
+> print('df1=')
+> print(df1)
+> 
+> data = {'name': ['xiaoming', 'xiaohong', 'xiaohua'], 'sex': ['m', 'w', 'w']}
+> df3 = pd.DataFrame(data)
+> print(df3)
+> ~~~
+>
+> ![1653291853646](./img/1653291853646.png)
 
+<hr>
 
+#### Ⅲ -面板
 
+<hr>
 
+### 2.`DataFrame`的基本功能
 
+> | 属性或方法 | 描述            |
+> | ---------- | --------------- |
+> | T          | 转置            |
+> | axes       | 轴序列          |
+> | dtype      | 数据类型        |
+> | empty      | 是否为空        |
+> | ndim       | 数组维度大小    |
+> | shape      | 形状            |
+> | size       | 元素数量        |
+> | values     | 数据值NumPy表示 |
+> | head()     | 返回开头前n行   |
+> | tail()     | 返回结尾后n行   |
+>
+> 
 
+<Hr>
 
+### 6. `Pandas`数据运算
 
+#### Ⅰ -算术运算
 
+##### ① `Series`算术运算
+
+> 如果存在相同的索引以及列名，则进行计算，没有则引入缺失值
+>
+> ~~~python
+> import numpy as np
+> import pandas as pd
+> 
+> s1 = pd.Series([1, 2, 3], index=[1, 2, 3])
+> s2 = pd.Series([3, 4, 5], index=[1, 2, 3])
+> s3 = pd.Series([3, 4, 5], index=[1, 2, 4])
+> print('相同索引')
+> print(s1+s2)
+> print('不同索引')
+> print(s1+s3)
+> ~~~
+>
+> ![1653325426069](./img/1653325426069.png)
+
+<hr>
+
+##### ② 数据帧算术运算
+
+> 如果存在相同的索引以及列名，则进行计算，没有则引入缺失值
+>
+> ~~~python
+> import numpy as np
+> import pandas as pd
+> 
+> df1 = pd.DataFrame({'a1': [1, 2], 'b1': [1, 2]})
+> df2 = pd.DataFrame({'a1': [1, 2], 'b1': [1, 2]})
+> df3 = pd.DataFrame({'a1': [1, 2], 'c1': [1, 2]})
+> print('相同索引')
+> print(df1 + df2)
+> print('不同索引')
+> print(df1 + df3)
+> ~~~
+>
+> ![1653326061316](./img/1653326061316.png)
+
+<hr>
+
+##### ③ 系列和数据帧计算
+
+> 如果存在相同的索引以及列名，则进行计算，没有则引入缺失值
+>
+> ~~~python
+> s1 = pd.Series([1, 2, 3], index=[1, 2, 3])
+> df1 = pd.DataFrame({1: [1, 2], 2: [1, 2]})
+> print(s1 + df1 )
+> ~~~
+>
+> ![1653326207764](./img/1653326207764.png)
+
+<hr>
+
+#### Ⅱ -函数应用与映射关系
+
+> | 函数方法 | 描述                                |
+> | -------- | ----------------------------------- |
+> | pipe()   | 其他函数套用在整个DataFrame         |
+> | map()    | 其他函数套用在整个Series            |
+> | apply()  | 其他函数套用在DataFrame的行和列上面 |
+
+<Hr>
+
+#### Ⅲ -排序
+
+> `ascending`：`True`升序排列，`False`降序
+>
+> `axis`：0按照行排列，1按照列排序
+>
+> | 函数方法     | 描述     |
+> | ------------ | -------- |
+> | sort_index() | 索引排序 |
+> | sort_value() | 值排序   |
+
+<Hr>
+
+#### Ⅳ -迭代
+
+<hr>
+
+#### Ⅴ -唯一值与去重
+
+> `unique`：去重
+>
+> `value_counts`：计算每一个元素个数
 
 
 
